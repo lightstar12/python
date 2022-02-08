@@ -1,0 +1,12 @@
+class Solution(object):
+    def buildArray(self, nums):
+        ans = []
+        length = int((len(nums)-1)/2)
+        for i in range(length):
+            num = int(nums[2*i+1])
+            num2 = 2*num+1
+            ans.append(nums[num2])
+        print(ans)
+nums=input()
+Sol=Solution()
+Sol.buildArray(nums)

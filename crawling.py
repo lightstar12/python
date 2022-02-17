@@ -11,8 +11,8 @@ wadiz_ = {}
 table = driver.find_element_by_class_name("review-order-by-container")
 rows = table.find_elements_by_class_name("review-item")
 
-for i in range(1,5): #30번만 실행
-    table = driver.find_element_by_class_name('review-list') #표 전체
+for i in range(1,5):
+    table = driver.find_element_by_class_name('review-list')
     rows = table.find_elements_by_class_name("review-item")
     rows = table.find_elements_by_class_name("review-item")[i]
     rows.click()

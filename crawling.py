@@ -9,7 +9,17 @@ wadiz_body = []
 wadiz_ = {}
 time.sleep(30)
 
-for i in range(1,4):
+last_page_height = driver.execute_script("return document.documentElement.scrollHeight")
+for c in range(1000):
+    driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
+    time.sleep(3.0)
+    new_page_height = driver.execute_script("return document.documentElement.scrollHeight")
+
+    if new_page_height == last_page_height:
+        break
+    last_page_height = new_page_height
+
+for i in range(1,2000):
     body = driver.find_elements_by_xpath(f'//*[@id="app"]/div[2]/div/div[4]/div/div[4]/div[2]/div/div[{i}]/div[3]')
     for value in body:
         wadiz_body.append(value.text)
@@ -22,4 +32,4 @@ import numpy as np
 df1=pd.DataFrame(wadiz_)
 
 import csv
-df1.to_csv("petfriend.csv", mode='w',encoding='utf-8-sig')
+df1.to_csv("petfriend_키튼_1.csv", mode='w',encoding='utf-8-sig')

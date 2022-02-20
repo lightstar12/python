@@ -1,4 +1,3 @@
-from lib2to3.pgen2 import driver
 from selenium import webdriver
 driver = webdriver.Chrome(executable_path=r"C:\PythonHome\chromedriver.exe")
 driver.get("https://www.pet-friends.co.kr/main/tab/2")

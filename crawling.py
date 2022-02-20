@@ -4,13 +4,11 @@ driver = webdriver.Chrome(executable_path=r"C:\PythonHome\chromedriver.exe")
 driver.get("https://www.pet-friends.co.kr/main/tab/2")
 
 import time
-wadiz_list = []
-wadiz_body = []
-wadiz_ = {}
-time.sleep(30)
+coment = []
+time.sleep(40)
 
 last_page_height = driver.execute_script("return document.documentElement.scrollHeight")
-for c in range(1000):
+for c in range(10):
     driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
     time.sleep(3.0)
     new_page_height = driver.execute_script("return document.documentElement.scrollHeight")
@@ -19,17 +17,16 @@ for c in range(1000):
         break
     last_page_height = new_page_height
 
-for i in range(1,2000):
+for i in range(1,5):
     body = driver.find_elements_by_xpath(f'//*[@id="app"]/div[2]/div/div[4]/div/div[4]/div[2]/div/div[{i}]/div[3]')
     for value in body:
-        wadiz_body.append(value.text)
-    wadiz_['body'] = wadiz_body
+        coment.append(value.text)
 
-print(wadiz_)
+print(coment)
 
 import pandas as pd
 import numpy as np
-df1=pd.DataFrame(wadiz_)
+df1=pd.DataFrame(coment)
 
 import csv
-df1.to_csv("petfriend_키튼_1.csv", mode='w',encoding='utf-8-sig')
+df1.to_csv("petfriend_테스트.csv", mode='w',encoding='utf-8-sig')
